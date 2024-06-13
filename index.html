@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-      <img src="logo.png" class="logo">
+      <img src="logo4.png" class="logo">
       <div class="content">
          <p>Web sitemiz bakımdadır</p>
          <h1>Yakında<span> Hizmetinizdeyiz...</span></h1>
@@ -30,37 +30,48 @@
             <span>Saniye</span>
           </div>
          </div>
-         <button type="button">Daha Fazlası İçin<img src="triangle.png"></button>
+         <button type="button">Daha Fazlası İçin<img src="triangle2.png"></button>
       </div>
-      <img src="rocket.png" class="rocket">
+      <img src="rocket3.png" class="rocket">
     </div>
     <script>
+      // Geri sayım için hedef tarihi belirleyin (30 Haziran 2024, 00:00:00)
       var countDownDate = new Date("June 30, 2024 00:00:00").getTime();
-      var x = setInterval(function(){
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-        
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
-         
-       if(distance < 0) {
-        clearInterval(x);
-        document.getElementById("days").innerHTML = "00";
-        document.getElementById("hours").innerHTML = "00";
-        document.getElementById("minutes").innerHTML = "00";
-        document.getElementById("seconds").innerHTML = "00";
-       }
-
-}, 1000);
-    </script>
+  
+      // Geri sayımı başlatmak için bir zamanlayıcı kurun
+      var x = setInterval(function() {
+          // Mevcut zamanı alın
+          var now = new Date().getTime();
+          
+          // Hedef tarih ile mevcut tarih arasındaki farkı hesaplayın
+          var distance = countDownDate - now;
+          
+          // Günleri hesaplayın
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          // Saatleri hesaplayın (günlerden kalan kısmı)
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          // Dakikaları hesaplayın (saatlerden kalan kısmı)
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          // Saniyeleri hesaplayın (dakikalardan kalan kısmı)
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          // HTML'deki ilgili elemanları güncelleyin
+          document.getElementById("days").innerHTML = days;
+          document.getElementById("hours").innerHTML = hours;
+          document.getElementById("minutes").innerHTML = minutes;
+          document.getElementById("seconds").innerHTML = seconds;
+  
+          // Geri sayım tamamlandığında yapılacak işlemler
+          if (distance < 0) {
+              // Zamanlayıcıyı durdurun
+              clearInterval(x);
+              // Tüm zaman değerlerini 00 olarak ayarlayın
+              document.getElementById("days").innerHTML = "00";
+              document.getElementById("hours").innerHTML = "00";
+              document.getElementById("minutes").innerHTML = "00";
+              document.getElementById("seconds").innerHTML = "00";
+          }
+      }, 1000); // Zamanlayıcıyı her saniye (1000 milisaniye) yenileyin
+  </script>
 </body>
 </html>
